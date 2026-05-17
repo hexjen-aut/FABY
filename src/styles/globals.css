@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+:root {
+  /* ── Faby Brand Colors ── */
+  --faby-rose:        #E8527A;
+  --faby-rose-dark:   #C73D62;
+  --faby-rose-light:  rgba(232, 82, 122, 0.10);
+  --faby-rose-glow:   rgba(232, 82, 122, 0.25);
+  --faby-rose-border: rgba(232, 82, 122, 0.22);
+
+  --faby-gold:        #C9963C;
+  --faby-gold-light:  rgba(201, 150, 60, 0.12);
+  --faby-gold-glow:   rgba(201, 150, 60, 0.20);
+
+  /* ── Surfaces (deep purple-noir) ── */
+  --bg:               #0C0A0F;
+  --surface:          #13101A;
+  --surface-2:        #1C1825;
+  --surface-3:        #261F32;
+  --border:           rgba(255, 255, 255, 0.07);
+  --border-hover:     rgba(255, 255, 255, 0.14);
+  --border-rose:      rgba(232, 82, 122, 0.22);
+
+  /* ── Text ── */
+  --text:             #F5F0FF;
+  --text-muted:       #9B93AE;
+  --text-faint:       #4E4762;
+
+  /* ── Semantic ── */
+  --success:          #3ECF8E;
+  --error:            #EF4444;
+  --warning:          #F59E0B;
+  --info:             #60A5FA;
+
+  /* ── Typography ── */
+  --font-display:     'Playfair Display', Georgia, serif;
+  --font-body:        'DM Sans', system-ui, sans-serif;
+
+  /* ── Spacing ── */
+  --sp-xs: 4px;   --sp-sm: 8px;   --sp-md: 16px;
+  --sp-lg: 24px;  --sp-xl: 40px;  --sp-2xl: 64px; --sp-3xl: 96px;
+
+  /* ── Radius ── */
+  --r-sm:   6px;    --r-md:   12px;   --r-lg:   18px;
+  --r-xl:   28px;   --r-pill: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:    0 2px 8px  rgba(0,0,0,0.45);
+  --shadow-md:    0 4px 20px rgba(0,0,0,0.55);
+  --shadow-lg:    0 8px 40px rgba(0,0,0,0.65);
+  --shadow-rose:  0 4px 28px rgba(232,82,122,0.30);
+  --shadow-gold:  0 4px 20px rgba(201,150,60,0.22);
+  --shadow-inner: inset 0 1px 0 rgba(255,255,255,0.06);
+
+  /* ── Layout ── */
+  --max-w:    1240px;
+  --nav-h:    68px;
+
+  /* ── Transitions ── */
+  --t-fast:   150ms ease-out;
+  --t-base:   220ms ease-out;
+  --t-slow:   380ms ease-out;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ── Typography ── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+p  { color: var(--text-muted); }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: var(--font-body); border: none; background: none; }
+input, textarea, select { font-family: var(--font-body); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--faby-rose); }
+
+/* ── Selection ── */
+::selection { background: var(--faby-rose-light); color: var(--faby-rose); }
+
+/* ── Layout helpers ── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-lg);
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all var(--t-base);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--faby-rose);
+  color: #fff;
+  box-shadow: var(--shadow-rose);
+}
+.btn-primary:hover {
+  background: var(--faby-rose-dark);
+  box-shadow: 0 6px 32px rgba(232,82,122,0.45);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--faby-rose);
+  border: 1.5px solid var(--faby-rose-border);
+}
+.btn-secondary:hover {
+  background: var(--faby-rose-light);
+  border-color: var(--faby-rose);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: var(--surface-2);
+}
+
+.btn-sm { padding: 8px 18px; font-size: 13px; }
+.btn-lg { padding: 16px 40px; font-size: 17px; }
+
+/* ── Cards ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--t-base), box-shadow var(--t-base), transform var(--t-base);
+}
+.card:hover {
+  border-color: var(--border-rose);
+  box-shadow: var(--shadow-rose);
+  transform: translateY(-2px);
+}
+
+/* ── Inputs ── */
+.input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 15px;
+  font-family: var(--font-body);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  outline: none;
+}
+.input::placeholder { color: var(--text-faint); }
+.input:focus {
+  border-color: var(--faby-rose);
+  box-shadow: 0 0 0 3px var(--faby-rose-light);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-rose    { background: var(--faby-rose-light);  color: var(--faby-rose); }
+.badge-gold    { background: var(--faby-gold-light);  color: var(--faby-gold); }
+.badge-success { background: rgba(62,207,142,0.12);   color: var(--success); }
+.badge-muted   { background: var(--surface-2);        color: var(--text-muted); border: 1px solid var(--border); }
+
+/* ── Star rating ── */
+.stars { display: flex; gap: 2px; align-items: center; }
+.star-filled { color: var(--faby-gold); }
+.star-empty  { color: var(--surface-3); }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: var(--sp-lg) 0;
+}
+
+/* ── Section titles ── */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faby-rose);
+  margin-bottom: var(--sp-sm);
+}
+
+/* ── Skeleton loader ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: var(--r-md);
+}
+
+/* ── Grain texture ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.5;
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-rose {
+  0%, 100% { box-shadow: 0 0 0 0 var(--faby-rose-glow); }
+  50%       { box-shadow: 0 0 0 8px transparent; }
+}
+
+.animate-fade-in { animation: fadeIn 0.5s ease-out both; }
+.animate-slide-up { animation: slideUp 0.6s ease-out both; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .container { padding: 0 var(--sp-md); }
+  .btn { padding: 11px 22px; font-size: 14px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 var(--sp-sm); }
+}
